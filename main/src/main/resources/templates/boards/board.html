@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title th:text="'Board ' +${board.name}">Board</title>
+  </head>
+  <body>
+    <p th:utext="${board.id}+'th board.'">hi</p>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>title</th>
+      </tr>
+      <tr th:each="post : ${posts.contents}">
+        <td th:text="${post.getId}"></td>
+        <td th:text="${post.getTitle}"></td>
+      </tr>
+    </table>
+  </body>
+</html>
