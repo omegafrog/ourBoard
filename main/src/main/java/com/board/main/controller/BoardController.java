@@ -1,7 +1,15 @@
 package com.board.main.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.StringTokenizer;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.board.main.repository.Board;
 import com.board.main.repository.BoardRepository;
@@ -13,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class BoardController {
@@ -43,5 +52,18 @@ public class BoardController {
         model.addAttribute("posts", currentPosts);
 
         return "boards/board";
+    }
+
+    @GetMapping("/boards/new")
+    public String newBoard() {
+        return "boards/new";
+    }
+
+    @PostMapping("/boards/new")
+    public String postBoard(Board board) {
+        // int newPostsid = memoryPostRepository.create();
+        // int newBoardid = memoryBoardRepository.create(board.name, board.description,
+        // postid);
+        return "redirect:/";
     }
 }

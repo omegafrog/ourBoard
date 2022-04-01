@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Board 추가</title>
+  </head>
+  <body>
+    <div>
+      <div>
+        <span>Board 추가</span>
+      </div>
+      <form action="/boards/new" method="post">
+        <div>
+          <input name="name" placeholder="Board이름" />
+          <textarea
+            name="description"
+            placeholder="Board 설명"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <input type="submit" value="생성" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
