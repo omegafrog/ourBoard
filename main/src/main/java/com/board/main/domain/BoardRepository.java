@@ -1,4 +1,4 @@
-package com.board.main.repository;
+package com.board.main.domain;
 
 import java.util.List;
 

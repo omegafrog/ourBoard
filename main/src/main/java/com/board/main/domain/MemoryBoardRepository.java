@@ -1,10 +1,10 @@
-package com.board.main;
+package com.board.main.domain;
 
 import java.util.HashMap;
 import java.util.List;
 
-import com.board.main.repository.Board;
-import com.board.main.repository.BoardRepository;
+import com.board.main.domain.Board;
+import com.board.main.domain.BoardRepository;
 
 public class MemoryBoardRepository implements BoardRepository {
 
@@ -12,7 +12,6 @@ public class MemoryBoardRepository implements BoardRepository {
 
     @Override
     public List<Board> findAll() {
-
         return null;
     }
 
