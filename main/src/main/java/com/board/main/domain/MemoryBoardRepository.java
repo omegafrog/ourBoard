@@ -3,8 +3,6 @@ package com.board.main.domain;
 import java.util.HashMap;
 import java.util.List;
 
-import com.board.main.domain.Board;
-import com.board.main.domain.BoardRepository;
 
 public class MemoryBoardRepository implements BoardRepository {
 

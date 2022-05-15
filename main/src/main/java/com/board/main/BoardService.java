@@ -2,7 +2,6 @@ package com.board.main;
 
 import com.board.main.domain.Board;
 import com.board.main.domain.MemoryBoardRepository;
-import com.board.main.domain.dto.BoardResponseDto;
 import com.board.main.domain.dto.SaveBoardRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class BoardService {
     }
 
     public int save(SaveBoardRequestDto saveBoardRequestDto){
-        return saveBoardRequestDto.toEntity().getBoardId();
+        return saveBoardRequestDto.toEntity().getId();
     }
     public int findPostsIdById(int id){
         Board curBoard = memoryBoardRepository.findById(id);
