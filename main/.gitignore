@@ -35,3 +35,12 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+# build file
+build/**
+
+# Gradle
+.gradle
+.idea/**
+
