@@ -6,6 +6,7 @@ import com.board.main.domain.user.entity.Member;
 import com.board.main.domain.user.repository.MemberRepository;
 import com.board.main.domain.user.repository.MemoryMemberRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,19 +18,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-
+@RequiredArgsConstructor
 public class MemberService {
 
     private final MemberRepository memberRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public MemberService(MemberRepository memberRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder){
-        this.memberRepository = memberRepository;
-        this.modelMapper = modelMapper;
-        this.passwordEncoder = passwordEncoder;
-    }
+
 
     private MemberDto of(Member member){
         return modelMapper.map(member,MemberDto.class);  //member entitiy를 member Dto로 변경
@@ -46,7 +42,7 @@ public class MemberService {
         duplicateIDCheck(member.getUserId());
 
         Member newMember = new Member();
-        newMember.setUserID(member.getUserId());
+        newMember.setUserId(member.getUserId());
         newMember.setUserName(member.getUserName());
         newMember.setPassword(passwordEncoder.encode(member.getPassword()));
 

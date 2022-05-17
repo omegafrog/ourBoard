@@ -17,7 +17,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("ourboard/users")
+@RequestMapping("/users")
 public class MemberController {
 
 

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width" , initial-scale="1">
   <link rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css" />
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -29,7 +30,7 @@
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="index.html">메인</a></li>
+      <li class="active"><a href="/">메인</a></li>
 
       <li><a href="temp.html">임시 Text</a></li>
       <li><a href="temp.html">임시 2</a></li>
@@ -43,35 +44,18 @@
         <ul class="dropdown-menu">
           <li>
             <a class="nav-link" sec:authorize="isAnonymous()"
-               th:href="@{/ourboard/users/login}">로그인</a>
+               th:href="@{/users/login}">로그인</a>
             <a class="nav-link" sec:authorize="isAuthenticated()"
-               th:href="@{/ourboard/users/logout}">로그아웃</a>
+               th:href="@{/users/logout}">로그아웃</a>
           </li>
-          <li><a sec:authorize="isAnonymous()" th:href="@{/ourboard/users/signup}">회원가입</a></li>
+          <li><a sec:authorize="isAnonymous()" th:href="@{/users/signup}">회원가입</a></li>
         </ul>
       </li>
     </ul>
   </div>
 
 </nav>
-<style>
-  .plus {
 
-    margin-right: 20px;
-    float: left;
-    height: 50px;
-    width: 120px;
-    text-indent: -9999px;
-    overflow: hidden;
-    background-size: cover;
-  }
-
-  form div {
-
-    padding-bottom: 30px;
-  }
-
-</style>
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
 <th:block layout:fragment="content"></th:block>
 <!-- 기본 템플릿 안에 삽입될 내용 End -->

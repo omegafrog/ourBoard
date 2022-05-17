@@ -9,7 +9,7 @@
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
       <div class="jumbotron" style="padding-top:20px;">
-        <form th:action="@{/ourboard/users/signup}" th:object="${signupform}" method="post">
+        <form th:action="@{/users/signup}" th:object="${signupform}" method="post">
           <div th:fragment="formErrorsFragment" class="alert alert-danger"
                role="alert" th:if="${#fields.hasAnyErrors()}">
             <div th:each="err : ${#fields.allErrors()}" th:text="${err}"/>
