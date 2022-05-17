@@ -9,7 +9,7 @@ import lombok.Setter;
 public class LoginFormDto {
 
     @NotEmpty(message = "id값은 필수사항 입니다.")
-    private String userId;
+    private String email;
     @NotEmpty(message = "비밀번호 값은 필수사항 입니다.")
     private String password;
 

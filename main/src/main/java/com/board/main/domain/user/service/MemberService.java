@@ -39,15 +39,15 @@ public class MemberService {
      */
     public String join(SignupForm member) {
 
-        duplicateIDCheck(member.getUserId());
+        duplicateIDCheck(member.getEmail());
 
         Member newMember = new Member();
-        newMember.setUserId(member.getUserId());
+        newMember.setEmail(member.getEmail());
         newMember.setUserName(member.getUserName());
         newMember.setPassword(passwordEncoder.encode(member.getPassword()));
 
         memberRepository.save(newMember);
-        return member.getUserId();
+        return member.getEmail();
     }
 
     /**
@@ -55,7 +55,7 @@ public class MemberService {
      * @param memberId
      */
     private void duplicateIDCheck(String memberId) {
-        memberRepository.findById(memberId)
+        memberRepository.findByEmail(memberId)
                 .ifPresent(m -> {
             throw new IllegalStateException("이미 가입된 아이디 입니다."); //optional로 감싸서 다음과 같은 문법 사용가능.
         });
@@ -77,7 +77,7 @@ public class MemberService {
      * @param id
      * @return
      */
-    public Optional<MemberDto> findMember(String id){
+    public Optional<MemberDto> findMember(Long id){
 
         Optional<Member> memberById =  memberRepository.findById(id);
         Optional<MemberDto> memberDtoById = memberById.map(q -> of(q));
