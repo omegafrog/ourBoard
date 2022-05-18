@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title th:text="'Board ' +${board.name}">Board</title>
+  </head>
+  <body>
+    <p th:utext="${board.id}+'th board.'">hi</p>
+    <p th:text="${board.description}"></p>
+    <a th:href="@{/boards/{id}/modify(id=${board.id})}">수정</a>
+
+    </form>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>title</th>
+      </tr>
+      <tr th:each="post : ${posts.contents}">
+        <td th:text="${post.id}"></td>
+        <td th:text="${post.title}"></td>
+        <td th:text="${post.content}"></td>
+      </tr>
+    </table>
+  </body>
+</html>
