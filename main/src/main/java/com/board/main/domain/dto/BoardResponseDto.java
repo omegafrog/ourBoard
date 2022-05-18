@@ -6,14 +6,15 @@ import lombok.Getter;
 @Getter
 public class BoardResponseDto {
     private final String name;
-    private final int boardId;
-    private final int postsId;
+    private final int id;
+    private final String description;
+    private final int postId;
 
     @Builder
-
-    public BoardResponseDto(String name, int boardId, int postsId) {
+    public BoardResponseDto(String name, int id, String description, int postId) {
         this.name = name;
-        this.boardId = boardId;
-        this.postsId = postsId;
+        this.id = id;
+        this.description = description;
+        this.postId = postId;
     }
 }

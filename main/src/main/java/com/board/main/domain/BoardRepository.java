@@ -1,11 +1,12 @@
 package com.board.main.domain;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BoardRepository {
-    void newBoard(Board board);
+    int save(Board board);
 
-    Board findById(int id);
+    Optional<Board> findById(int id);
 
     List<Board> findAll();
 

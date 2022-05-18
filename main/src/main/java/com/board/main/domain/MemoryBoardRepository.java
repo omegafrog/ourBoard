@@ -1,12 +1,22 @@
 package com.board.main.domain;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import javax.swing.text.html.Option;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
-
+@RequiredArgsConstructor
+@Repository
 public class MemoryBoardRepository implements BoardRepository {
 
-    HashMap<Integer, Board> memoryBoardRepository = new HashMap<>();
+    private final HashMap<Integer, Board> memoryBoardRepository;
+
+    private int sequence = 0;
 
     @Override
     public List<Board> findAll() {
@@ -14,9 +24,8 @@ public class MemoryBoardRepository implements BoardRepository {
     }
 
     @Override
-    public Board findById(int id) {
-        // TODO Auto-generated method stub
-        return null;
+    public Optional<Board> findById(int id) {
+        return Optional.ofNullable(memoryBoardRepository.get(id));
     }
 
     @Override
@@ -26,9 +35,16 @@ public class MemoryBoardRepository implements BoardRepository {
     }
 
     @Override
-    public void newBoard(Board board) {
+    public int save(Board board) {
         // TODO Auto-generated method stub
-        memoryBoardRepository.put(board.getId(), board);
+        memoryBoardRepository.put(sequence++, board);
+        return board.getId();
+    }
+
+
+
+    public int getSequence(){
+        return this.sequence;
     }
 
 }

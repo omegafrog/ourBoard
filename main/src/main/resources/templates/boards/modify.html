@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Board' +${board.id}+ '수정'"></title>
+</head>
+<body>
+    <div>
+        <form action="#" th:action="@{/boards/{id}(id=${board.id})}" th:object="${saveBoardRequestDto}" th:method="put">
+            <label for="name">이름</label>
+            <input type="text" th:value="${board.name}" name="name" id="name"/>
+            <label for="description">설명</label>
+            <textarea name="description" rows="10" cols="30" id="description">[[${board.description}]]</textarea>
+            <input hidden name="id" th:value="${board.id}">
+            <input type="submit" value="수정">
+            <a href="/" role="button">취소</a>
+        </form>
+    </div>
+</body>
+</html>
