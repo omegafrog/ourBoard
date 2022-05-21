@@ -1,14 +1,18 @@
 package com.board.main.domain.user.service;
 
 import com.board.main.domain.user.dto.MemberDto;
+import com.board.main.domain.user.dto.PasswordChangeFormDto;
 import com.board.main.domain.user.dto.SignupForm;
 import com.board.main.domain.user.entity.Member;
 import com.board.main.domain.user.repository.MemberRepository;
 import com.board.main.domain.user.repository.MemoryMemberRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.security.Principal;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,6 +20,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.springframework.validation.BindingResult;
 
 @Service
 @RequiredArgsConstructor
@@ -84,4 +89,27 @@ public class MemberService {
         return memberDtoById;
 
     }
+
+    public void changePassword(PasswordChangeFormDto passwordChangeFormDto ,Principal principal)
+            throws Exception {
+
+        Optional<Member> member = memberRepository.findById(Long.parseLong(principal.getName()));
+
+        if(!member.isPresent()) {
+            throw new Exception("유효하지 않은 사용자 입니다.");
+        }
+
+        String oldPassword = member.get().getPassword(); //기존의 비밀번호
+
+        if (passwordEncoder.matches(passwordChangeFormDto.getNewPassword(),
+                oldPassword)) {   // 3. 기존의 입력 비밀번호가 적합한지 검사
+            throw new Exception("현재 비밀번호 값이 일치하지 않습니다.");
+        }
+
+        member.get().setPassword(passwordEncoder.encode(passwordChangeFormDto.getNewPassword()));
+
+       // memberRepository.save(member.get());
+
+    }
+
 }

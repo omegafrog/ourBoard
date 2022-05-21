@@ -1,27 +1,58 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
-<div class="container">
-    <div>
-        <table>
-            <thead>
-            <tr>
-                <th>식별id</th>
-                <th>이메일</th>
-                <th>비밀번호</th>
-                <th>사용자이름</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="member : ${members}">
-                <td th:text="${member.id}"></td>
-                <td th:text="${member.email}"></td>
-                <td th:text="${member.password}"></td>
-                <td th:text="${member.userName}"></td>
-            </tr>
-            </tbody>
-        </table>
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <div>-->
+<!--        <table>-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>식별id</th>-->
+<!--                <th>이메일</th>-->
+<!--                <th>비밀번호</th>-->
+<!--                <th>사용자이름</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="member : ${members}">-->
+<!--                <td th:text="${member.id}"></td>-->
+<!--                <td th:text="${member.email}"></td>-->
+<!--                <td th:text="${member.password}"></td>-->
+<!--                <td th:text="${member.userName}"></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--</div> &lt;!&ndash; /container &ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+
+<div layout:fragment="content" class="container my-3">
+
+  <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="js/bootstrap.js"></script>
+
+  <div class="container">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <li>
+        <th> userId : </th>
+        <td th:text="${member.get().getEmail()}"></td>
+        <br>
+        <th> userName : </th>
+        <td th:text="${member.get().getUserName()}"></td>
+        <br>
+        <a class="page-link"
+           th:href="@{/users/modify}">
+          <span>비밀번호 수정</span>
+      </li>
+
+
+      </a>
     </div>
-</div> <!-- /container -->
-</body>
+  </div>
+</div>
+
+
+</div>
 </html>
