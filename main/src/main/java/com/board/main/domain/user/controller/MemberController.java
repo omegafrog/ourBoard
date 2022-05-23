@@ -6,6 +6,7 @@ import com.board.main.domain.user.dto.PasswordChangeFormDto;
 import com.board.main.domain.user.dto.SignupForm;
 import com.board.main.domain.user.service.MemberService;
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,12 +57,12 @@ public class MemberController {
         return "redirect:/";
     }
 
-//    @GetMapping("/view")
-//    public String List(Model model){
-//        List<MemberDto> members = memberService.findMembers();
-//        model.addAttribute("members",members);
-//        return "users/view";
-//    }
+    @GetMapping("/view")
+    public String List(Model model){
+        List<MemberDto> members = memberService.findMembers();
+        model.addAttribute("members",members);
+        return "users/viewAllMember";
+    }
 
     @GetMapping("/login")
     public String login(@ModelAttribute("loginForm") LoginFormDto loginForm) {
