@@ -1,0 +1,43 @@
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+
+
+<div layout:fragment="content" class="container my-3">
+  <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="js/bootstrap.js"></script>
+
+  <div class="container">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <div class="jumbotron" style="padding-top:20px;">
+        <form th:action="@{/users/signup}" th:object="${signupform}" method="post">
+          <div th:fragment="formErrorsFragment" class="alert alert-danger"
+               role="alert" th:if="${#fields.hasAnyErrors()}">
+            <div th:each="err : ${#fields.allErrors()}" th:text="${err}"/>
+          </div>
+
+
+          <h3 style="text-align:center;">회원가입 화면</h3>
+          <div class="form-gruop">
+
+
+            <input type="text" class="form-control" placeholder="이메일" name="email" maxlength="20">
+
+          </div>
+          <div class="form-gruop">
+            <input type="password" class="form-control" placeholder="비밀번호" name="password"
+                   maxlength="20">
+          </div>
+          <div class="form-gruop">
+            <input type="text" class="form-control" placeholder="성명" name="userName" maxlength="20">
+
+          </div>
+          <input type="submit" class="btn btn-primary form-control" value="회원가입">
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</html>

@@ -1,0 +1,44 @@
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+
+
+<div layout:fragment="content" class="container my-3">
+  <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="js/bootstrap.js"></script>
+
+  <div class="container">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <div class="jumbotron" style="padding-top:20px;">
+        <form th:action="@{/users/modify}" th:object="${passwordForm}" method="post">
+          <input type="hidden" name="_method" value="put">
+          <div th:fragment="formErrorsFragment" class="alert alert-danger"
+               role="alert" th:if="${#fields.hasAnyErrors()}">
+            <div th:each="err : ${#fields.allErrors()}" th:text="${err}"/>
+          </div>
+
+
+          <h3 style="text-align:center;">비밀번호 변경 하기</h3>
+          <div class="form-gruop">
+
+
+            <input type="password" class="form-control" placeholder="현재 비밀번호" name="oldPassword" maxlength="20">
+
+          </div>
+          <div class="form-gruop">
+            <input type="password" class="form-control" placeholder="변경 할 비밀번호" name="newPassword"
+                   maxlength="20">
+          </div>
+          <div class="form-gruop">
+            <input type="password" class="form-control" placeholder="재입력" name="reNewPassword" maxlength="20">
+
+          </div>
+          <input type="submit" class="btn btn-primary form-control" value="비밀번호 변경하기">
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</html>

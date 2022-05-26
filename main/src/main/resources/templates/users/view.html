@@ -1,0 +1,31 @@
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+
+<div layout:fragment="content" class="container my-3">
+
+  <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="js/bootstrap.js"></script>
+
+  <div class="container">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <li>
+        <th> userId : </th>
+        <td th:text="${member.get().getEmail()}"></td>
+        <br>
+        <th> userName : </th>
+        <td th:text="${member.get().getUserName()}"></td>
+        <br>
+        <a class="page-link"
+           th:href="@{/users/modify}">
+          <span>비밀번호 수정</span>
+      </li>
+
+
+      </a>
+    </div>
+  </div>
+</div>
+
+
+</div>
+</html>
